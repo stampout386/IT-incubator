@@ -16,13 +16,9 @@ function AccordionTitle(props: any) {
 }
 
 function AccordionBody(props: any) {
-    return (
-        <ul>
-            <li>{props.value}</li>
-            <li>{props.value}</li>
-            <li>{props.value}</li>
-            <li>{props.value}</li>
-        </ul>
 
+    let liArr = props.value.map((item: any) => <li>{item}</li>)
+    return (
+        <ul>{liArr}</ul>
     )
 }

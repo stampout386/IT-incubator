@@ -9,8 +9,8 @@ function App() {
             <PageTitle title={"This is App Title One 1"}/>
             <PageTitle title={"This is App Title Two 2"}/>
             <Rating value={5}/>
-            <Accordion title = {'Menu'} value ={1}/>
-            <Accordion title = {'Settings'} value ={2}/>
+            <Accordion title={'Menu'} value={[1, 2, 3, 4, 5, 'hello']}/>
+            <Accordion title={'Settings'} value={[10, 9, 8, 7, 'six', 6, 5]}/>
             <Rating value={1}/>
         </div>
     );
