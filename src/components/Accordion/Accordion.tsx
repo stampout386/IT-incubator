@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 
 type AccordionPropsType = {
     title: string,
@@ -7,21 +7,43 @@ type AccordionPropsType = {
 }
 
 export default function Accordion(props: AccordionPropsType) {
-    if (props.collapsed) {
-        return (
-            <div>
-                <AccordionTitle title={props.title}/>
-                <AccordionBody value={props.value}/>
-            </div>
-        );
-    } else {
-        return (
-            <div>
-                <AccordionTitle title={props.title}/>
-            </div>
-        );
+    return (
+        <div>
+            <AccordionTitle title={props.title}/>
+            {!props.collapsed && <AccordionBody value={props.value}/>}
+        </div>
+
+    );
+
+}
+type UnAccordionPropsType = {
+    title: string
+    value: object
+}
+
+export function UnAccordion(props: UnAccordionPropsType) {
+
+    let [collapsed, setCollapsed] = useState(true)
+
+    let collapsedState = (collapsed: boolean) => {
+        if (collapsed) {
+            return false
+        } else {
+            return true
+        }
+
+
     }
 
+    return (
+        <div>
+            <div onClick={() => {
+                setCollapsed(collapsedState)
+            }}><AccordionTitle title={props.title}/></div>
+            {!collapsed && <AccordionBody value={props.value}/>}
+        </div>
+
+    );
 }
 
 function AccordionTitle(props: any) {
@@ -32,7 +54,7 @@ function AccordionTitle(props: any) {
 
 function AccordionBody(props: any) {
 
-    let liArr = props.value.map((item: any) => <li>{item}</li>)
+    let liArr = props.value.map((item: any) => <li> {item}</li>)
     return (
         <ul>{liArr}</ul>
     )
