@@ -27,13 +27,13 @@ function App() {
         {id: 3, isDone: false, title: 'Meat'},
     ]
     return (
-        <div>
+        <div className={'App'}>
             <Rating value={5}/>
             {/*<Accordion title={'Menu'} value={[1, 2, 3, 4, 5, 'hello']} collapsed={true}/>*/}
             {/*<Accordion title={'Settings'} value={[10, 9, 8, 7, 'six', 6, 5]} collapsed={true}/>*/}
             <OnOff/>
-            <UnAccordion title={'Menu'} value={['Home','About','Product','Blog','Contact']}/>
-            <UnAccordion title={'Settings'} value={['Video','Audio','Game','Options']}/>
+            <UnAccordion title={'Menu'} value={['Home', 'About', 'Product', 'Blog', 'Contact']}/>
+            <UnAccordion title={'Settings'} value={['Video', 'Audio', 'Game', 'Options']}/>
 
             <UnRating/>
         </div>
