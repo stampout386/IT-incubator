@@ -4,12 +4,13 @@ type AccordionPropsType = {
     title: string,
     value: object,
     collapsed: boolean
+    onChange: () => void
 }
 
 export default function Accordion(props: AccordionPropsType) {
     return (
         <div>
-            <AccordionTitle title={props.title}/>
+            <AccordionTitle title={props.title} onChange={props.onChange}/>
             {!props.collapsed && <AccordionBody value={props.value}/>}
         </div>
 
@@ -39,7 +40,8 @@ export function UnAccordion(props: UnAccordionPropsType) {
         <div>
             <div onClick={() => {
                 setCollapsed(collapsedState)
-            }}><AccordionTitle title={props.title}/></div>
+            }}>
+                <AccordionTitle title={props.title}/></div>
             {!collapsed && <AccordionBody value={props.value}/>}
         </div>
 
@@ -47,8 +49,9 @@ export function UnAccordion(props: UnAccordionPropsType) {
 }
 
 function AccordionTitle(props: any) {
+
     return (
-        <h3>{props.title}</h3>
+        <h3 onClick={props.onChange}>{props.title}</h3>
     )
 }
 

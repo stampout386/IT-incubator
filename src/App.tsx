@@ -1,6 +1,6 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './App.css';
-import Rating, {UnRating} from "./components/Rating/Rating";
+import Rating from "./components/Rating/Rating";
 import Accordion, {UnAccordion} from "./components/Accordion/Accordion";
 import TodoList from "./TodoList";
 import {OnOff} from "./OnOff/OnOff";
@@ -10,6 +10,7 @@ export type TodoListArrayType = {
     isDone: boolean,
     title: string
 }
+
 
 function App() {
     const todoListTitle_1: string = "what a want learn";
@@ -26,16 +27,24 @@ function App() {
         {id: 2, isDone: false, title: 'Bread'},
         {id: 3, isDone: false, title: 'Meat'},
     ]
+
+    let [ratingValue, setRatingValue] = useState<number>(0)
+    let [accordionCollapsed, setAccordionCollapsed] = useState<boolean>(true)
+    let [switchOn, setSwitchOn] = useState<boolean>(false)
     return (
         <div className={'App'}>
-            <Rating value={5}/>
-            {/*<Accordion title={'Menu'} value={[1, 2, 3, 4, 5, 'hello']} collapsed={true}/>*/}
+
+            <Accordion title={'Menu'} collapsed={accordionCollapsed} value={[10, 9, 8, 7, 'six', 6, 5]}
+                       onChange={() => {
+                           setAccordionCollapsed(!accordionCollapsed)
+                       }}/>
             {/*<Accordion title={'Settings'} value={[10, 9, 8, 7, 'six', 6, 5]} collapsed={true}/>*/}
-            <OnOff/>
+            <OnOff on={switchOn} onChange={setSwitchOn}/>
             <UnAccordion title={'Menu'} value={['Home', 'About', 'Product', 'Blog', 'Contact']}/>
             <UnAccordion title={'Settings'} value={['Video', 'Audio', 'Game', 'Options']}/>
 
-            <UnRating/>
+            {/*<UnRating/>*/}
+            <Rating value={ratingValue} onClick={setRatingValue}/>
         </div>
     );
 }
